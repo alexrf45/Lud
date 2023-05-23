@@ -1,0 +1,106 @@
+# #ssh-agent w/ quiet
+# zstyle :omz:plugins:ssh-agent agent-forwarding yes
+# zstyle :omz:plugins:ssh-agent identities   ~/.ssh/kali-ssh
+# zstyle :omz:plugins:ssh-agent quiet yes
+
+# Path to your oh-my-zsh installation.
+export ZSH="/home/ubuntu/.oh-my-zsh"
+
+#New History file location allows us to back it up to github
+HISTFILE="$HOME/.bounty_history"
+HISTSIZE=1000
+SAVEHIST=2000
+HISTSTAMPS="mm/dd/yyyy"
+setopt EXTENDED_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt HIST_SAVE_NO_DUPS
+setopt INC_APPEND_HISTORY_TIME
+alias backup='cp -r ~/.logs ~/.config/hist'
+
+
+#history log function
+    precmd() { eval 'if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history -f)" >> ~/.logs/zsh-history-$(date "+%Y-%m-%d").log; fi' }
+
+
+#zsh theme
+ZSH_THEME="ka-tet"
+
+
+zstyle ':omz:update' mode auto      # update automatically without asking
+
+plugins=(
+aws
+colored-man-pages
+colorize
+git
+history
+jsontools
+ssh-agent
+themes
+tmux
+web-search
+zsh-autosuggestions
+zsh-syntax-highlighting
+)
+
+source $ZSH/oh-my-zsh.sh
+
+bindkey -v
+
+# Preferred editor for local and remote sessions
+ if [[ -n $SSH_CONNECTION ]]; then
+   export EDITOR='vim'
+ else
+   export EDITOR='vim'
+ fi
+
+# zsh-autosuggestions settings.
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+
+#Custom ENV
+export EDITOR=vim
+export PATH=$PATH:$HOME/bin:/usr/local/go/bin:$HOME/.local:$HOME/.local/bin
+export AGENT='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36'
+export BOUNTY='X-Bug-Bounty: f0_nzy'
+
+#daily drivers
+alias t='tmux new -s $1'
+alias i='sudo apt-get install'
+alias upgrade='sudo apt-get upgrade -y'
+alias public='curl wtfismyip.com/text'
+alias publicinfo='curl wtfismyip.com/json'
+alias py='python3'
+alias reload='. ~/.zshrc'
+
+#docker function
+function dockershellhere() {
+    dirname=${PWD##*/}
+    mkdir .bounty-logs && docker run --rm -it --entrypoint=/bin/bash -v `pwd`:/${dirname} -w /${dirname} debian:latest
+}
+
+#ffuf functions
+function ffuf_recursive(){
+    mkdir -p recursive
+    dom=$(echo $1 | unfurl format %s%d)
+    ffuf -c -v -u $1/FUZZ -w $2 \
+    -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" \
+    -H "X-Bug-Bounty: r0land" \
+    -H "Client-IP: 127.0.0.1" \
+    -H "X-Remote-IP: 127.0.0.1" \
+    -H "Forwarded-For: 127.0.0.1" \
+    -H "X-Forwarded-For: 127.0.0.1" \
+    -recursion -recursion-depth 5 \
+    -mc all -ac \
+    -o recursive/recursive_$dom.csv -of csv $3
+}
+
+function ffuf_recursive_simple(){
+ mkdir -p recursive
+ dom=$(echo $1 | unfurl format %s%d)
+ ffuf -c -v -u $1/FUZZ -w $2 \
+   -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" \
+   -H "X-Bug-Bounty: r0land" -recursion -recursion-depth 5 -mc all -ac -o recursive/recursive_$dom.csv -of csv $3
+}
+
+export GOPATH=/usr/local/bin/go
