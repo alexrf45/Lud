@@ -14,11 +14,11 @@ sudo apt update
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
-wget https://raw.githubusercontent.com/alexrf45/Lud/main/resources/zsh/ka-tet.zsh-theme -O ~/.oh-my-zsh/themes/ka-tet.zsh-theme
+wget https://raw.githubusercontent.com/alexrf45/Lud/main/config/zsh/ka-tet.zsh-theme -O ~/.oh-my-zsh/themes/ka-tet.zsh-theme
 
-wget https://raw.githubusercontent.com/alexrf45/Lud/main/resources/zsh/zshrc -O /home/ubuntu/.zshrc
+wget https://raw.githubusercontent.com/alexrf45/Lud/main/config/zsh/zshrc -O /home/ubuntu/.zshrc
 
-wget https://raw.githubusercontent.com/alexrf45/Lud/main/resources/tmux.conf -O /home/ubuntu/.tmux.conf
+wget https://raw.githubusercontent.com/alexrf45/Lud/main/config/tmux.conf -O /home/ubuntu/.tmux.conf
 
 mkdir -p /home/ubuntu/.tmux
 
