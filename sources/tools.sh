@@ -1,9 +1,9 @@
 #!/bin/bash
 
 function install_go() {
-	wget https://go.dev/dl/go1.20.3.linux-amd64.tar.gz &&
+	wget https://go.dev/dl/go1.20.4.linux-amd64.tar.gz &&
 		rm -rf /usr/local/go &&
-		sudo tar -C /usr/local -xzf go1.20.3.linux-amd64.tar.gz &&
+		sudo tar -C /usr/local/bin -xzf go1.20.3.linux-amd64.tar.gz &&
 		rm go1.20.3.linux-amd64.tar.gz
 }
 
@@ -17,9 +17,9 @@ function waybackurls_install() {
 }
 
 function httpx_install() {
-	wget -q https://github.com/projectdiscovery/httpx/releases/download/v1.2.9/httpx_1.2.9_linux_amd64.zip &&
-		unzip httpx_1.2.9_linux_amd64.zip -d ./httpx &&
-		rm httpx_1.2.9_linux_amd64.zip &&
+	wget -q https://github.com/projectdiscovery/httpx/releases/download/v1.3.0/httpx_1.3.0_linux_amd64.zip &&
+		unzip httpx_1.3.0_linux_amd64.zip -d ./httpx &&
+		rm httpx_1.3.9_linux_amd64.zip &&
 		mv httpx/httpx /home/bounty/.local/http-x &&
 		rm -r httpx/
 }
@@ -64,4 +64,21 @@ go-dorks
 subfinder
 rush
 unfurl
-sudo dpkg -i /home/bounty/resources/rustscan_2.1.1_amd64.deb
+
+wget https://github.com/alexrf45/Lud/raw/main/sources/hakrawler -O hakrawler &&
+	mv hakrawler /home/bounty/.local/hakrawler
+
+wget https://github.com/alexrf45/Lud/raw/main/sources/jsleak -O jsleak &&
+	mv jsleak /home/bounty/.local/jsleak
+
+go install -v github.com/owasp-amass/amass/v3/...@master
+
+go install -v github.com/projectdiscovery/chaos-client/cmd/chaos@latest
+
+go install github.com/hakluke/hakrevdns@latest
+
+go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest
+
+wget https://raw.githubusercontent.com/Bo0oM/fuzz.txt/master/fuzz.txt -O /home/bounty/wordlists/fuzz.txt
+
+wget https://github.com/arkadiyt/bounty-targets-data/blob/master/data/domains.txt -O /home/bounty/overall-scope.txt

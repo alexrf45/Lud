@@ -11,20 +11,14 @@ base
 function network() {
 	sudo apt-get install -y netcat-traditional rlwrap nmap \
 		netdiscover masscan dnsutils tcpdump \
-		ftp telnet iputils-ping iproute2 proxychains
+		ftp telnet iputils-ping iproute2 proxychains prips
 }
 
 network
 
 function web() {
 	sudo apt-get install -y whatweb ffuf exiftool \
-		default-mysql-client hurl postgresql arjun crunch seclists
+		default-mysql-client postgresql arjun crunch sqlmap
 }
 
 web
-
-function lolcat_gem() {
-	sudo gem install lolcat
-}
-
-lolcat_gem

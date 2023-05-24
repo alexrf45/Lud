@@ -44,3 +44,9 @@ cat main.txt | cut -d "," -f 1 | tee -a domains.txt
 subfinder -d $DOMAIN -all -cs -rl 20 -t 5 -max-time 5 | tee -a main.txt
 cat domains.txt | http-x -title -wc -sc -cl -ct -web-server -asn -o httpx-out.txt -p 8000,8080,8443,443,80,8008,3000,5000,9090,900,7070,9200,15672,9000 -threads 50 -location
 amass intel -config config.ini -org
+chaos -key $CHAOS_KEY -dL root.txt -silent -o $DOMAIN.txt
+prips $CIDR | hakrevdns -t 20 -r 1.1.1.1 | httprobe
+dnsx -l root.txt -t 50 -rl 100 -o dnsx-domains.txt -r resolvers.txt
+subfinder -silent -d $DOMAIN -t 20 -rl 40 | dnsx -silent -t 50 -rl 50 -o dnsx-domains.txt -r resolvers.txt
+
+
