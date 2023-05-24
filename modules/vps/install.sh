@@ -1,6 +1,6 @@
 #! /bin/bash
 
-apt-get update && apt-get install -y zsh wget curl python3 tmuxp
+apt-get update && apt-get install -y zsh wget curl tmux python3 tmuxp
 
 curl -fsSL https://get.docker.com -o get-docker.sh
 
