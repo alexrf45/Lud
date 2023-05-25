@@ -104,4 +104,3 @@ function ffuf_recursive_simple(){
 }
 
 export GOPATH=/home/ubuntu/.local
-#export GOROOT=/home/ubuntu/.local/bin
