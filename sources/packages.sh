@@ -3,7 +3,7 @@
 function base() {
 	sudo apt-get install -y wget curl man git zsh \
 		tmux ruby ruby-dev vim nano p7zip-full \
-		djvulibre-bin python3-pip libpcap-dev jq figlet lolcat
+		djvulibre-bin python3-pip libpcap-dev jq figlet lolcat golang
 }
 
 base

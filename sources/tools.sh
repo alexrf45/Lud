@@ -23,7 +23,7 @@ function rush() {
 		gunzip rush.tar.gz && tar -xf rush.tar && rm rush.tar && mv rush /home/ubuntu/.local/rush && chmod +x /home/ubuntu/.local/rush
 }
 
-install_go
+#install_go
 httprobe
 go-dorks
 
