@@ -60,7 +60,7 @@ ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 
 #Custom ENV
 export EDITOR=vim
-export PATH=$PATH:$HOME/bin:/usr/local/go/bin:$HOME/.local:$HOME/.local/bin
+export PATH=$PATH:$HOME/bin:/usr/local/go:/usr/local/bin:$HOME/.local:$HOME/.local/bin:$PATH:$GOPATH/bin
 export AGENT='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36'
 export BOUNTY='X-Bug-Bounty: f0_nzy'
 
@@ -103,4 +103,5 @@ function ffuf_recursive_simple(){
    -H "X-Bug-Bounty: r0land" -recursion -recursion-depth 5 -mc all -ac -o recursive/recursive_$dom.csv -of csv $3
 }
 
-export GOPATH=/usr/local/bin/go
+export GOPATH=/home/ubuntu/.local/
+export GOROOT=/usr/local/go
