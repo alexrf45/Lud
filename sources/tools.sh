@@ -7,7 +7,7 @@ function install_go() {
 
 	wget "https://go.dev/dl/$file" -q --show-progress &&
 		rm -rf /usr/local/go &&
-		sudo tar -C /usr/local/bin -xzf "$file" &&
+		tar -C /home/ubuntu/.local -xzf "$file" &&
 		rm "$file"
 
 }
