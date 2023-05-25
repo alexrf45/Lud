@@ -34,6 +34,12 @@ mkdir -p /home/ubuntu/.logs
 
 mkdir /home/ubuntu/.logs && mkdir /home/ubuntu/.local && mkdir /home/ubuntu/wordlists
 
+wget https://raw.githubusercontent.com/alexrf45/Lud/main/sources/packages.sh && chmod +x packages.sh && ./packages.sh
+
+wget https://raw.githubusercontent.com/alexrf45/Lud/main/sources/tools.sh && chmod +x tools.sh && ./tools.sh
+
+wget https://github.com/alexrf45/Lud/raw/main/sources/jsleak -O /home/bounty/.local/jsleak && chmod +x /home/bounty/.local/jsleak
+
 EOF
 
 chsh -s /usr/bin/zsh ubuntu
