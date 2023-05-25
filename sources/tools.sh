@@ -69,11 +69,10 @@ subfinder
 rush
 unfurl
 
-wget https://github.com/alexrf45/Lud/raw/main/sources/hakrawler -O hakrawler &&
-	mv hakrawler /home/bounty/.local/hakrawler
-
 wget https://github.com/alexrf45/Lud/raw/main/sources/jsleak -O jsleak &&
 	mv jsleak /home/bounty/.local/jsleak
+
+go install github.com/projectdiscovery/katana/cmd/katana@latest
 
 go install -v github.com/owasp-amass/amass/v3/...@master
 
@@ -82,6 +81,12 @@ go install -v github.com/projectdiscovery/chaos-client/cmd/chaos@latest
 go install github.com/hakluke/hakrevdns@latest
 
 go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest
+
+go install github.com/lc/gau/v2/cmd/gau@latest
+
+go install github.com/hakluke/hakrawler@latest
+
+go install -v github.com/projectdiscovery/notify/cmd/notify@latest
 
 wget https://raw.githubusercontent.com/Bo0oM/fuzz.txt/master/fuzz.txt -O /home/bounty/wordlists/fuzz.txt
 

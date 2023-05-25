@@ -48,5 +48,11 @@ chaos -key $CHAOS_KEY -dL root.txt -silent -o $DOMAIN.txt
 prips $CIDR | hakrevdns -t 20 -r 1.1.1.1 | httprobe
 dnsx -l root.txt -t 50 -rl 100 -o dnsx-domains.txt -r resolvers.txt
 subfinder -silent -d $DOMAIN -t 20 -rl 40 | dnsx -silent -t 50 -rl 50 -o dnsx-domains.txt -r resolvers.txt
+cat domains.txt | gau --threads 10 -o url.txt --mc 200,403,500
+cat urls.txt | hakrawler -timeout 5 -d 4 -h $BOUNTY -u
+katana -list url_list.txt
+cat domains.txt | httpx | katana -d 5 -jc -delay 3 -rlm 60 -o $PROJECT-endpoints.txt
+docker run --rm  mswell/masstrufflehog -o $DOMAIN
+
 
 
