@@ -30,9 +30,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-mkdir -p /home/ubuntu/.logs
-
-mkdir /home/ubuntu/.logs && mkdir /home/ubuntu/.local && mkdir /home/ubuntu/wordlists
+mkdir -p /home/ubuntu/.logs && mkdir /home/ubuntu/.local && mkdir /home/ubuntu/wordlists
 
 wget https://raw.githubusercontent.com/alexrf45/Lud/main/sources/packages.sh && chmod +x packages.sh && ./packages.sh
 
