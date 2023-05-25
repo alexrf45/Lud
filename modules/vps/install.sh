@@ -32,11 +32,11 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 
 mkdir -p /home/ubuntu/.logs && mkdir /home/ubuntu/.local && mkdir /home/ubuntu/wordlists
 
-wget https://raw.githubusercontent.com/alexrf45/Lud/main/sources/packages.sh && chmod +x packages.sh && ./packages.sh
+wget https://raw.githubusercontent.com/alexrf45/Lud/main/sources/packages.sh && chmod +x packages.sh && ./packages.sh && rm packages.sh
 
-wget https://raw.githubusercontent.com/alexrf45/Lud/main/sources/tools.sh && chmod +x tools.sh && ./tools.sh
+wget https://raw.githubusercontent.com/alexrf45/Lud/main/sources/tools.sh && chmod +x tools.sh && ./tools.sh && rm tools.sh
 
-wget https://github.com/alexrf45/Lud/raw/main/sources/jsleak -O /home/bounty/.local/jsleak && chmod +x /home/bounty/.local/jsleak
+wget https://github.com/alexrf45/Lud/raw/main/sources/jsleak -O /home/ubuntu/.local/jsleak && chmod +x /home/ubuntu/.local/jsleak
 
 EOF
 
