@@ -1,10 +1,14 @@
 #!/bin/bash
 
 function install_go() {
-	wget https://go.dev/dl/go1.20.4.linux-amd64.tar.gz &&
+	file=$(curl -Ls https://go.dev/dl | grep -oP '(?<=<a class="download downloadBox" href="/dl/).*linux.*(?=">)')
+
+	version=$(echo "$file" | grep -oP '(?<=go).*(?=.linux)')
+
+	wget "https://go.dev/dl/$file" -q --show-progress &&
 		rm -rf /usr/local/go &&
-		sudo tar -C /usr/local/bin -xzf go1.20.3.linux-amd64.tar.gz &&
-		rm go1.20.3.linux-amd64.tar.gz
+		sudo tar -C /usr/local/bin -xzf "$file" &&
+		rm "$file"
 }
 
 function waybackurls_install() {
