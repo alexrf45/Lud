@@ -40,6 +40,10 @@ wget https://github.com/alexrf45/Lud/raw/main/sources/jsleak -O /home/ubuntu/.lo
 
 wget https://raw.githubusercontent.com/alexrf45/Lud/main/config/zsh/bounty_history -O /home/ubuntu/.bounty_history
 
+wget https://raw.githubusercontent.com/janmasarik/resolvers/master/resolvers.txt
+
+wget https://raw.githubusercontent.com/alexrf45/Lud/main/config/recon.sh && chmod +x recon.sh && mv recon.sh /home/ubuntu/.local/recon.sh
+
 EOF
 
 chsh -s /usr/bin/zsh ubuntu

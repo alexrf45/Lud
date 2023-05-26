@@ -8,14 +8,16 @@ export ZSH="/home/ubuntu/.oh-my-zsh"
 
 #New History file location allows us to back it up to github
 HISTFILE="$HOME/.bounty_history"
-HISTSIZE=1000
-SAVEHIST=2000
+HISTSIZE=10000
+SAVEHIST=20000
 HISTSTAMPS="mm/dd/yyyy"
+HISTTIMEFORMAT="[%F %T] "
 setopt EXTENDED_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_REDUCE_BLANKS
 setopt HIST_SAVE_NO_DUPS
 setopt INC_APPEND_HISTORY_TIME
+setopt INC_APPEND_HISTORY
 alias backup='cp -r ~/.logs ~/.config/hist'
 
 
@@ -55,7 +57,7 @@ bindkey -v
  fi
 
 # zsh-autosuggestions settings.
-ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=1000
 
 #Custom ENV
 export EDITOR=vim
@@ -65,12 +67,14 @@ export BOUNTY='X-Bug-Bounty: f0_nzy'
 
 #daily drivers
 alias t='tmux new -s $1'
+alias http='sudo python3 -m http.server 80'
 alias i='sudo apt-get install'
 alias upgrade='sudo apt-get upgrade -y'
 alias public='curl wtfismyip.com/text'
-alias publicinfo='curl wtfismyip.com/json'
+alias publicinfo='curl wtfismyip.com/text'
 alias py='python3'
 alias reload='. ~/.zshrc'
+alias commands='history | cut -c 6-'
 
 #docker function
 function dockershellhere() {

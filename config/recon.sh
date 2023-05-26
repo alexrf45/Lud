@@ -72,9 +72,14 @@ file_format_1() {
 }
 
 main_banner
+
+tool_banner "Running chaos"
+chaos -key $CHAOS_KEY -dL root.txt -silent -o chaos-$project-domains.txt
 tool_banner "Running subfinder"
 subfinder -dL $file -all -cs -rl 10 -t 10 -timeout 10 -max-time 5 >$project-main.txt
 cat $project-main.txt | cut -d "," -f 1 >$project-domains.txt
+tool_banner "Running dnsx"
+dnsx -l root.txt -t 50 -rl 100 -o dnsx-$project-domains.txt -r resolvers.txt
 tool_banner "subdomain enumeration complete"
 tool_banner "Running httprobe"
 http_probe
