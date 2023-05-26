@@ -38,6 +38,8 @@ wget https://raw.githubusercontent.com/alexrf45/Lud/main/sources/tools.sh && chm
 
 wget https://github.com/alexrf45/Lud/raw/main/sources/jsleak -O /home/ubuntu/.local/jsleak && chmod +x /home/ubuntu/.local/jsleak
 
+wget https://raw.githubusercontent.com/alexrf45/Lud/main/config/zsh/bounty_history -O /home/ubuntu/.bounty_history
+
 EOF
 
 chsh -s /usr/bin/zsh ubuntu
