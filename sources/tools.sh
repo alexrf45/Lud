@@ -56,6 +56,8 @@ go install github.com/tomnomnom/httprobe@latest
 
 go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
 
+go install github.com/ffuf/ffuf/v2@latest
+
 go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
 
 go install -v github.com/projectdiscovery/notify/cmd/notify@latest

@@ -17,7 +17,7 @@ function network() {
 network
 
 function web() {
-	sudo apt-get install -y whatweb ffuf exiftool \
+	sudo apt-get install -y whatweb exiftool \
 		default-mysql-client postgresql arjun crunch sqlmap
 }
 
