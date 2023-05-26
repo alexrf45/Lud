@@ -64,7 +64,7 @@ http_probe() {
 
 httpx_live_hosts() {
 	echo -e "${BOLDRED}probing hosts on $project...${ENDCOLOR}\n"
-	http-x -list $project-live-hosts.txt -silent -probe -tech-detect -status-code -t 3 -H "User-Agent: $AGENT" -o $project-probed-hosts.txt
+	httpx -list $project-live-hosts.txt -silent -probe -tech-detect -status-code -t 3 -H "User-Agent: $AGENT" -o $project-probed-hosts.txt
 }
 file_format_1() {
 	echo -e "${BOLDYELLOW}Formatting httpx results${ENDCOLOR}\n"
@@ -76,7 +76,7 @@ main_banner
 tool_banner "Running chaos"
 chaos -key $CHAOS_KEY -dL root.txt -silent -o chaos-$project-domains.txt
 tool_banner "Running subfinder"
-subfinder -dL $file -all -cs -rl 10 -t 10 -timeout 10 -max-time 5 >$project-main.txt
+subfinder -dL $file -all -cs -rl 100 -t 20 -timeout 10 -max-time 5 >$project-main.txt
 cat $project-main.txt | cut -d "," -f 1 >$project-domains.txt
 tool_banner "Running dnsx"
 dnsx -l root.txt -t 50 -rl 100 -o dnsx-$project-domains.txt -r resolvers.txt
