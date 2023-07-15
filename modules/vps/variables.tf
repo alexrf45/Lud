@@ -11,7 +11,7 @@ variable "resource_tags" {
 variable "ami" {
   description = "Amazon Machine Image"
   type        = string
-  default     = "ami-0305d0b03812a425e"
+  default     = "ami-016ce77a68234f5e3"
 
 }
 

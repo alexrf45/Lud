@@ -21,11 +21,11 @@ provider "aws" {
 }
 
 module "vps" {
-  source = "github.com/alexrf45/Lud.git//modules/vps?ref=v1.1.2"
+  source = "github.com/alexrf45/Lud.git//modules/vps?ref=v1.0.1"
 
   instance_type = "m5ad.large"
   key_name      = "bounty"
-  ami           = "ami-0305d0b03812a425e"
+  ami           = "ami-016ce77a68234f5e3"
   volume_size   = "70"
 
 }
